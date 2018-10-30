@@ -29,6 +29,14 @@ class App extends Component {
       history: joined
     })
   }
+  deleteFromHistory = (id) => {
+    const deletedHistoryItem = this.state.history.filter(item => {
+      return item.id !== id
+    })
+    this.setState({
+      history: deletedHistoryItem
+    })
+  }
   
 
   render() {
@@ -36,7 +44,7 @@ class App extends Component {
       <div className="App">
         <SearchForm addResult={this.addResult} results={this.state.results} addToHistory={this.addToHistory}/>
         <SearchResults results={this.state.results} addToHistory={this.addToHistory} />
-        <SearchHistory history={this.state.history} addToHistory={this.addToHistory} />
+        <SearchHistory history={this.state.history} addToHistory={this.addToHistory} deleteFromHistory={this.deleteFromHistory} />
       </div>
     );
   }

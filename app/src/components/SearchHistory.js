@@ -1,9 +1,9 @@
 import React from 'react'
 
-const SearchHistory = ({ history, addToHistory }) => {
+const SearchHistory = ({ history, deleteFromHistory }) => {
   const historyList = history.length ? (history.map(item => {
     return(
-      <li key={item.id}>{item.title}</li>
+      <li key={item.id} onClick={()=>{deleteFromHistory(item.id)}}>{item.title}</li>
     )
   })) : null
   console.log('HiStOrY',history)
