@@ -1,19 +1,19 @@
 import React, { Component } from 'react';
+import SearchResults from './SearchResults';
 
 class SearchForm extends Component {
     state = {
-        content: ''
+        title: ''
     }
 
-    handleKeyUp = (e) => {
+    handleOnChange = (e) => {
         this.setState({
-            content: e.target.value
+            title: e.target.value
         })
-        console.log(this.state)
+        this.props.addResult(this.state)
     }
     handleOnSubmit = (e) => {
         e.preventDefault()
-        console.log(e)
     }
 
     render() {
@@ -21,8 +21,9 @@ class SearchForm extends Component {
             <div className="SearchForm">
                 <form onSubmit={this.handleOnSubmit}>
                     <label htmlFor="search">Search:</label>
-                    <input onKeyUp={this.handleKeyUp} />
+                    <input type="search" onChange={this.handleOnChange} />
                 </form>
+                <SearchResults results={this.props.results} />
             </div>
         );
     }
