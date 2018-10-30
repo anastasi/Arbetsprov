@@ -1,12 +1,10 @@
 import React from 'react'
 
-const SearchResults = ({results}) => {
-    console.log('RESULTS', results)
-
+const SearchResults = ({ results, addToHistory }) => {
     const resultsList = results.length > 0 ? (
         results.map(result=>{
             return(
-                <li key={result.id}><span>{result.title}</span></li>
+                <li onClick={() => {addToHistory(result.id)}} key={result.id}><span>{result.title}</span></li>
             )
         })
     ) : null

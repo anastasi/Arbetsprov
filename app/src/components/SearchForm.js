@@ -1,11 +1,9 @@
 import React, { Component } from 'react';
-import SearchResults from './SearchResults';
 
 class SearchForm extends Component {
     state = {
         title: ''
     }
-
     handleOnChange = (e) => {
         this.setState({
             title: e.target.value
@@ -23,7 +21,6 @@ class SearchForm extends Component {
                     <label htmlFor="search">Search:</label>
                     <input type="search" onChange={this.handleOnChange} />
                 </form>
-                <SearchResults results={this.props.results} />
             </div>
         );
     }
