@@ -11,9 +11,11 @@ const SearchResults = ({ results, addToHistory }) => {
 
   return (
     <div className="ResultsWrap">
-        <ul className="SearchResultsList">
-            {resultsList}
-        </ul>
+        {results.length > 0 &&
+            <ul className="SearchResultsList">
+                {resultsList}
+            </ul>
+        }
     </div>
   )
 }

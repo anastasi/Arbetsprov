@@ -22,8 +22,9 @@
   color: #61dafb;
 }
 .Container {
-  margin: 0 3rem;
-  min-height: 100vh;
+  margin: 0 auto;
+  max-width: 1280px;
+  width: 90%;
 }
 .Container .InputField {
   background: #7D94AA url(img/search.svg) no-repeat left 1.2rem center;

@@ -9,10 +9,12 @@ const SearchHistory = ({ history, deleteFromHistory }) => {
   console.log('HiStOrY',history)
   return (
     
-    <div>
+    <div className="FullWidth">
+      <div className="Container">
         <ul>
            {historyList}
         </ul>
+      </div>
     </div>
   )
 }

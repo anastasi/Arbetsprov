@@ -19,6 +19,11 @@ class App extends Component {
       results
     })
   }
+  hideList = () => {
+    this.setState({
+      results: []
+    })
+  }
   addToHistory = (id = 0) => {
     if(this.state.results.length === 0) return
 
@@ -27,12 +32,13 @@ class App extends Component {
       newHistoryItem = this.state.results.filter(item => {
         return item.id === id
       })
-    }
+  }
     
     const joined = this.state.history.concat(newHistoryItem);
     this.setState({
       history: joined
     })
+    this.hideList()
   }
 
   toggle() {
@@ -66,8 +72,8 @@ class App extends Component {
           <img src={require('./img/logo.svg')} className="App-logo" alt="logo" />
           <SearchForm getJson={this.getJson} addResult={this.addResult} results={this.state.results} addToHistory={this.addToHistory}/>
           <SearchResults results={this.state.results} addToHistory={this.addToHistory} />
+        </div> {/* Closed Container */}
           <SearchHistory history={this.state.history} addToHistory={this.addToHistory} deleteFromHistory={this.deleteFromHistory} />
-        </div>
       </div>
     );
   }
