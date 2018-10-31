@@ -6,24 +6,29 @@ import SearchHistory from './components/SearchHistory'
 
 class App extends Component {
   state = {
-    results: [
-      {title: "cat", id:1},
-      {title: "frog", id:2},
-      {title: "dog", id:3},
-    ],
+    results: [],
     history: []
   }
-  addResult = (item) => {
-    item.id = Math.random()
-    const results = [...this.state.results, item]
+  addResult = (json) => {
+    //Map API to our schema
+    let results = []
+    json.results.forEach(res=>{
+      results.push({id: res.trackId, title: res.trackName})
+    })
     this.setState({
       results
     })
   }
-  addToHistory = (id) => {
-    const newHistoryItem = this.state.results.filter(item => {
-      return item.id === id
-    })
+  addToHistory = (id = 0) => {
+    if(this.state.results.length === 0) return
+    
+    let newHistoryItem = this.state.results[0]
+    if(id){
+      newHistoryItem = this.state.results.filter(item => {
+        return item.id === id
+      })
+    }
+    
     const joined = this.state.history.concat(newHistoryItem);
     this.setState({
       history: joined
@@ -37,14 +42,27 @@ class App extends Component {
       history: deletedHistoryItem
     })
   }
-  
+  async getJson(music) {
+      try {
+          let response = await fetch(`https://itunes.apple.com/search?term=${music}&entity=musicVideo&limit=5`);
+          let json = await response.json();
+          this.addResult(json)
+          console.log(json)
+      }
+      catch(e) {
+          console.log('Error!', e);
+      }
+  }
 
   render() {
     return (
       <div className="App">
-        <SearchForm addResult={this.addResult} results={this.state.results} addToHistory={this.addToHistory}/>
-        <SearchResults results={this.state.results} addToHistory={this.addToHistory} />
-        <SearchHistory history={this.state.history} addToHistory={this.addToHistory} deleteFromHistory={this.deleteFromHistory} />
+        <div className="Container">
+          <img src={require('./img/logo.svg')} className="App-logo" alt="logo" />
+          <SearchForm getJson={this.getJson} addResult={this.addResult} results={this.state.results} addToHistory={this.addToHistory}/>
+          <SearchResults results={this.state.results} addToHistory={this.addToHistory} />
+          <SearchHistory history={this.state.history} addToHistory={this.addToHistory} deleteFromHistory={this.deleteFromHistory} />
+        </div>
       </div>
     );
   }
