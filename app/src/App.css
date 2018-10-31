@@ -23,6 +23,7 @@
 }
 .Container {
   margin: 0 3rem;
+  min-height: 100vh;
 }
 .Container .InputField {
   background: #7D94AA url(img/search.svg) no-repeat left 1.2rem center;
@@ -54,3 +55,30 @@ input.InputField[type=search]:focus{
   background-color: #B3BECA;
 }
 
+/* Search Results */
+.ResultsWrap {
+  position: relative;
+  margin: 0 auto;
+}
+.SearchResultsList{
+  background-color: white;
+  padding: 10px 20px;
+  list-style: none;
+  text-align: left;
+  width: 100%;
+  left: 50%;
+  position: absolute;
+  -webkit-transform: translateX(-50%);
+  transform: translateX(-50%);
+  -moz-opacity:0.5;
+  -khtml-opacity: 0.5;
+  opacity: 0.9;
+  z-index: 10000;
+}
+.SearchResultItem{
+  border-bottom: 1px solid grey;
+  padding: 12px 0;
+}
+.display-none{
+  display: none;
+}

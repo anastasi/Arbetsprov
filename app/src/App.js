@@ -7,7 +7,7 @@ import SearchHistory from './components/SearchHistory'
 class App extends Component {
   state = {
     results: [],
-    history: []
+    history: [],
   }
   addResult = (json) => {
     //Map API to our schema
@@ -21,7 +21,7 @@ class App extends Component {
   }
   addToHistory = (id = 0) => {
     if(this.state.results.length === 0) return
-    
+
     let newHistoryItem = this.state.results[0]
     if(id){
       newHistoryItem = this.state.results.filter(item => {
@@ -33,6 +33,10 @@ class App extends Component {
     this.setState({
       history: joined
     })
+  }
+
+  toggle() {
+    this.setState({addClass: !this.state.addClass});
   }
   deleteFromHistory = (id) => {
     const deletedHistoryItem = this.state.history.filter(item => {
@@ -55,6 +59,7 @@ class App extends Component {
   }
 
   render() {
+    
     return (
       <div className="App">
         <div className="Container">

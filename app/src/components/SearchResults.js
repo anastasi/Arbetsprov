@@ -4,18 +4,19 @@ const SearchResults = ({ results, addToHistory }) => {
     const resultsList = results.length > 0 ? (
         results.map(result=>{
             return(
-                <li onClick={() => {addToHistory(result.id)}} key={result.id}><span>{result.title}</span></li>
+                <li className="SearchResultItem" onClick={() => {addToHistory(result.id)}} key={result.id}><span>{result.title}</span></li>
             )
         })
     ) : null
 
   return (
-    <div>
-        <ul>
+    <div className="ResultsWrap">
+        <ul className="SearchResultsList">
             {resultsList}
         </ul>
     </div>
   )
 }
+
 
 export default SearchResults
