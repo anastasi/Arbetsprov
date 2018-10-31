@@ -7,7 +7,7 @@ import SearchHistory from './components/SearchHistory'
 class App extends Component {
   state = {
     results: [],
-    history: [],
+    history: []
   }
   addResult = (json) => {
     //Map API to our schema
