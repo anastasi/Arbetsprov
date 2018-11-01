@@ -32,8 +32,7 @@ class App extends Component {
       newHistoryItem = this.state.results.filter(item => {
         return item.id === id
       })
-  }
-    
+    } 
     const joined = this.state.history.concat(newHistoryItem);
     this.setState({
       history: joined

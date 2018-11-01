@@ -1,32 +1,18 @@
 .App {
   text-align: center;
 }
-
 .App-logo {
   height: 50vmin;
   width: 10rem;
 }
-
-.App-header {
-  background-color: #282c34;
-  min-height: 100vh;
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-  justify-content: center;
-  font-size: calc(10px + 2vmin);
-  color: white;
-}
-
-.App-link {
-  color: #61dafb;
-}
 .Container {
   margin: 0 auto;
-  max-width: 1280px;
+  max-width: 80rem;
   width: 80%;
 }
-.Container .InputField {
+
+/* Search */
+.InputField {
   background: #7D94AA url(img/search.svg) no-repeat left 1.2rem center;
   border: 0;
   width: 100%;
@@ -37,17 +23,14 @@
   font-size: 1.3rem;
   color: white;
 }
-
 .InputField::placeholder { /* Chrome, Firefox, Opera, Safari 10.1+ */
   color: #B7C1CD;
   font-size: 1.3rem;
   opacity: 1; /* Firefox */
 }
-
 .InputField::-ms-input-placeholder { /* Internet Explorer 10-11 */
   color: #B7C1CD;
 }
-
 .InputField::-ms-input-placeholder { /* Microsoft Edge */
   color: #B7C1CD;
 }
@@ -63,7 +46,7 @@ input.InputField[type=search]:focus{
 }
 .SearchResultsList{
   background-color: white;
-  padding: 10px 20px;
+  padding: 0.6rem 1.25rem;
   list-style: none;
   text-align: left;
   width: 100%;
@@ -71,14 +54,11 @@ input.InputField[type=search]:focus{
   position: absolute;
   -webkit-transform: translateX(-50%);
   transform: translateX(-50%);
-  -moz-opacity:0.5;
-  -khtml-opacity: 0.5;
-  opacity: 0.9;
   z-index: 10000;
 }
 .SearchResultItem{
-  border-bottom: 1px solid grey;
-  padding: 12px 0;
+  border-bottom: 0.06rem solid grey;
+  padding: 0.75rem 0;
 }
 .display-none{
   display: none;
@@ -86,27 +66,41 @@ input.InputField[type=search]:focus{
 
 /* History */
 .App .HistoryWrap{
-  background: linear-gradient(#1F416A, #1F416A) no-repeat;
-  margin-top: 40px;
+  background: #2B4B7B;
+  margin-top: 2.5rem;
 }
 .SearchHistoryList{
   list-style: none;
-  padding: 30px 0;
+  padding: 1.875rem 0;
 }
 .SearchHistoryItem{
-  padding: 20px 0;
+  padding: 1.25rem 0;
   color: white;
 }
+.SearchHistoryItem:hover, 
+.SearchHistoryItem:focus {
+  background-color: #3A5780;
+} 
 .ActiveListItem{
   background-color: #3A5780;
 }
 .SearchHistoryItem{
   text-align: left;
   position: relative;
+  overflow: hidden;
 }
-.DeleteBtn{
+.DeleteBtn {
+  display: inline;
   position: absolute;
+  top: 0;
+  bottom: 0;
+  right: -5rem;
+  background-color:#793953;
+  padding: 1.25rem;
+  cursor: pointer;
+  transition: all .2s ease-in;
+}
+.SearchHistoryItem:hover .DeleteBtn, 
+.SearchHistoryItem:focus .DeleteBtn{
   right: 0;
-  transform: translateY(-50%);
-  top: 50%;
 }
