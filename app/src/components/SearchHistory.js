@@ -7,10 +7,10 @@ const SearchHistory = ({ history, deleteFromHistory }) => {
       <li key={item.id} className="SearchHistoryItem" >
   <div className="Container">
       <div className="FlexContainer">
-        <div className="FlexItem">
+        <div className="FlexItem HistoryTitle">
           {item.title}
         </div>
-        <div className="FlexItem">
+        <div className="FlexItem TimeStamp">
           2018-02-22 11:00
           <span className="DeleteBtn" onClick={()=>{deleteFromHistory(item.id)}}><img src={Delete}/></span>
         </div>

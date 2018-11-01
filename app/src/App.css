@@ -116,3 +116,9 @@ input.InputField[type=search]:focus{
 .SearchHistoryItem:focus .DeleteBtn{
   right: 0;
 }
+.SearchHistoryItem .HistoryTitle{
+  font-size: 16px;
+}
+.SearchHistoryItem .TimeStamp{
+  font-size: 14px;
+}
