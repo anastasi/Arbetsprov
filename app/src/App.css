@@ -8,9 +8,17 @@
 .Container {
   margin: 0 auto;
   max-width: 80rem;
-  width: 80%;
+  width: 90%;
 }
-
+.FlexContainer {
+  display: flex;
+  flex-wrap: nowrap;
+}
+.FlexContainer .FlexItem {
+  width: 100%;
+  margin: 5px;
+  font-size: 14px;
+}
 /* Search */
 .InputField {
   background: #7D94AA url(img/search.svg) no-repeat left 1.2rem center;
@@ -66,7 +74,7 @@ input.InputField[type=search]:focus{
 
 /* History */
 .App .HistoryWrap{
-  background: #2B4B7B;
+  background: -webkit-gradient(linear, left bottom, right top, color-stop(0%, #3B5793), color-stop(100%,#20416A));
   margin-top: 2.5rem;
 }
 .SearchHistoryList{
@@ -96,9 +104,13 @@ input.InputField[type=search]:focus{
   bottom: 0;
   right: -5rem;
   background-color:#793953;
-  padding: 1.25rem;
+  padding: 1.5rem;
   cursor: pointer;
   transition: all .2s ease-in;
+  display: flex;
+}
+.DeleteBtn img{
+  margin: 0 auto;
 }
 .SearchHistoryItem:hover .DeleteBtn, 
 .SearchHistoryItem:focus .DeleteBtn{
