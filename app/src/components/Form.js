@@ -1,27 +1,24 @@
 import React, { Component } from 'react';
+import './Form.css'
 
-class SearchForm extends Component {
+class Form extends Component {
     state = {
         title: ''
     }
-    
     handleOnChange = (e) => {
         const musicName = e.target.value
         this.setState({
             title: musicName
         })
-        // this.props.addResult(this.state)
         this.props.getJson(musicName)
     }
     handleOnSubmit = (e) => {
         e.preventDefault()
         this.props.addToHistory() 
     }
-
-   
     render() {
         return (
-            <div className="SearchForm">
+            <div className="Form">
                 <form onSubmit={this.handleOnSubmit}>
                     <input type="search" onChange={this.handleOnChange} className="InputField" placeholder="Search for something..." />
                 </form>
@@ -30,4 +27,4 @@ class SearchForm extends Component {
     }
 }
 
-export default SearchForm;
+export default Form;
