@@ -1,14 +1,18 @@
 import React, { Component } from 'react';
 import './App.css';
-import SearchForm from './components/SearchForm'
-import SearchResults from './components/SearchResults'
-import SearchHistory from './components/SearchHistory'
+import Form from './components/Form'
+import Results from './components/Results'
+import History from './components/History'
+import Loader from './components/Loader'
 
 class App extends Component {
   state = {
     results: [],
-    history: []
+    history: [],
+    isLoading: false,
+    error: ''
   }
+
   addResult = (json) => {
     //Map API to our schema
     let results = []
@@ -25,38 +29,51 @@ class App extends Component {
     })
   }
   addToHistory = (id = 0) => {
-    if(this.state.results.length === 0) return
-
-    let newHistoryItem = this.state.results[0]
+    const { results, history } = this.state
+    if(results.length === 0) return
+    
+    let newHistoryItem = results[0]
     if(id){
-      newHistoryItem = this.state.results.filter(item => {
+      newHistoryItem = results.filter(item => {
         return item.id === id
       })
     } 
-    const joined = this.state.history.concat(newHistoryItem);
+    const joined = history.concat(newHistoryItem);
     this.setState({
       history: joined
     })
     this.hideList()
   }
 
-  toggle() {
-    this.setState({addClass: !this.state.addClass});
-  }
   deleteFromHistory = (id) => {
-    const deletedHistoryItem = this.state.history.filter(item => {
+    const deletedItem = this.state.history.filter(item => {
       return item.id !== id
     })
     this.setState({
-      history: deletedHistoryItem
+      history: deletedItem
     })
   }
-  async getJson(music) {
+
+  getJson = async (music) => {
       try {
-          let response = await fetch(`https://itunes.apple.com/search?term=${music}&entity=musicVideo&limit=5`);
-          let json = await response.json();
-          this.addResult(json)
-          console.log(json)
+        if (music.length < 2) {
+          this.setState({
+            results: [],
+            isLoading: false
+          });
+          return;
+        }
+        
+        this.setState({
+          isLoading: true
+        })
+        const apiUrl = `https://itunes.apple.com/search?term=${music}&entity=musicVideo&limit=5`;
+        let response = await fetch(apiUrl);
+        let json = await response.json();
+        this.setState({
+          isLoading: false
+        })
+        this.addResult(json)
       }
       catch(e) {
           console.log('Error!', e);
@@ -64,15 +81,18 @@ class App extends Component {
   }
 
   render() {
-    
+    const { results, history, isLoading, error } = this.state
     return (
       <div className="App">
         <div className="Container">
           <img src={require('./img/logo.svg')} className="App-logo" alt="logo" />
-          <SearchForm getJson={this.getJson} addResult={this.addResult} results={this.state.results} addToHistory={this.addToHistory}/>
-          <SearchResults results={this.state.results} addToHistory={this.addToHistory} />
+          { isLoading &&
+            <Loader />
+          }
+          <Form getJson={this.getJson} addToHistory={this.addToHistory}/>
+          <Results results={results} addToHistory={this.addToHistory} />
         </div> {/* Closed Container */}
-          <SearchHistory history={this.state.history} addToHistory={this.addToHistory} deleteFromHistory={this.deleteFromHistory} />
+          <History history={history} deleteFromHistory={this.deleteFromHistory} />
       </div>
     );
   }
