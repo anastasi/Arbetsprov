@@ -1,0 +1,29 @@
+
+/* Search Form*/
+.InputField {
+    background: #7D94AA url(../img/search.svg) no-repeat left 1.2rem center;
+    border: 0;
+    width: 100%;
+    padding: 1.8rem 2.8rem;
+    border-radius: 0.4rem 0.4rem 0.4rem 0.4rem;
+    -moz-border-radius: 0.4rem 0.4rem 0.4rem 0.4rem;
+    -webkit-border-radius: 0.4rem 0.4rem 0.4rem 0.4rem;
+    font-size: 1.3rem;
+    color: white;
+  }
+  .InputField::placeholder { /* Chrome, Firefox, Opera, Safari 10.1+ */
+    color: #B7C1CD;
+    font-size: 1.3rem;
+    opacity: 1; /* Firefox */
+  }
+  .InputField::-ms-input-placeholder { /* Internet Explorer 10-11 */
+    color: #B7C1CD;
+  }
+  .InputField::-ms-input-placeholder { /* Microsoft Edge */
+    color: #B7C1CD;
+  }
+  input.InputField[type=search]:focus{
+    outline-style: none;
+    background-color: #B3BECA;
+  }
+  

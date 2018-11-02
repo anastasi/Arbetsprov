@@ -1,0 +1,58 @@
+
+/* History */
+.App .HistoryWrap{
+    background: -webkit-gradient(linear, left bottom, right top, color-stop(0%, #3B5793), color-stop(100%,#20416A));
+    margin-top: 2.5rem;
+  }
+  .HistoryList{
+    list-style: none;
+    padding: 1.875rem 0;
+  }
+  .HistoryItem{
+    padding: 1.25rem 0;
+    color: white;
+  }
+  .HistoryItem:hover, 
+  .HistoryItem:focus {
+    background-color: #3A5780;
+  } 
+  .ActiveListItem{
+    background-color: #3A5780;
+  }
+  .HistoryItem{
+    text-align: left;
+    position: relative;
+    overflow: hidden;
+  }
+  .DeleteBtn {
+    display: inline;
+    position: absolute;
+    top: 0;
+    bottom: 0;
+    right: -5rem;
+    background-color:#793953;
+    padding: 1.5rem;
+    cursor: pointer;
+    transition: all .2s ease-in;
+    display: flex;
+  }
+  .DeleteBtn img{
+    margin: 0 auto;
+  }
+  .HistoryItem:hover .DeleteBtn, 
+  .HistoryItem:focus .DeleteBtn{
+    right: 0;
+  }
+  .HistoryItem .HistoryTitle{
+    font-size: 1rem;
+  }
+  .HistoryItem .TimeStamp{
+    font-size: 0.89rem;
+  }
+  .Date{
+    margin-right: 0.32rem;
+  }
+  .Time{
+    margin-left: 0.32rem;
+  }
+  

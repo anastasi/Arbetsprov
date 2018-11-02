@@ -1,0 +1,28 @@
+/* Search Results */
+.ResultsWrap {
+  position: relative;
+  margin: 0 auto;
+}
+.ResultsList{
+  background-color: white;
+  padding: 0.6rem 1.25rem;
+  list-style: none;
+  text-align: left;
+  width: 100%;
+  left: 50%;
+  position: absolute;
+  -webkit-transform: translateX(-50%);
+  transform: translateX(-50%);
+  z-index: 10000;
+}
+.ResultItem{
+  border-bottom: 0.06rem solid #b7c1cd66;
+  padding: 0.75rem 0;
+}
+.ResultItem:first-child {
+  padding: 0.3rem 0 0.75rem ;
+}
+.ResultItem:last-child {
+  border-bottom: none;
+  padding: 0.75rem 0 0.3rem;
+}
