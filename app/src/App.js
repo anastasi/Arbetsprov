@@ -9,8 +9,7 @@ class App extends Component {
   state = {
     results: [],
     history: [],
-    isLoading: false,
-    error: ''
+    isLoading: false
   }
 
   addResult = (json) => {
@@ -81,7 +80,7 @@ class App extends Component {
   }
 
   render() {
-    const { results, history, isLoading, error } = this.state
+    const { results, history, isLoading } = this.state
     return (
       <div className="App">
         <div className="Container">

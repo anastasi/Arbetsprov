@@ -16,7 +16,7 @@ const HistoryItem = ({ history, deleteFromHistory }) => {
                         <span className="Date">{moment().format('YYYY-MM-DD')}</span>
                         <span className="Time">{moment().format('h:mm')}</span>
                         <span className="DeleteBtn" onClick={()=>{deleteFromHistory(item.id)}}>
-                            <img src={Delete} />
+                            <img src={Delete} alt="delete_icon"/>
                         </span>
                       </div>
                     </div>
